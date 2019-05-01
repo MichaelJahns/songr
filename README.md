@@ -13,6 +13,7 @@ Houses week 3 Code Fellow Labs
 |-----------------------|---------------------------------------------------------------------------------------------------------------|
 | `/hello`              | prints 'Hello World.' to the page                                                                             |
 | `/capitalize/<input>` | Where input is a string (spaces and special characters okay), prints input to the page in all capital letters |
+| `/abums/`             | (WIP) Generates a dumby album, prints all albums in db into a table | 
 
 #### Resources
 Creating unique exceptions
