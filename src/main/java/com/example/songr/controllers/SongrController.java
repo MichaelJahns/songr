@@ -68,6 +68,15 @@ public class SongrController {
         }
     }
 
+    //Create album
+    @PostMapping("/")
+    public Album createAlbum(
+            @RequestBody Album album
+    ) {
+        album = this.repo.save(album);
+        return album;
+    }
+
     //Update one album
     @PostMapping("/{id}")
     public Album updateAlbum(

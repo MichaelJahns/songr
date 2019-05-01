@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="static/stylesheets/table.css">
+    <link rel="stylesheet" type="text/css" href="./static/table.css">
 </head>
 <body>
 <!--th:style="${iStat.odd}? 'font-weight: bold;'-->
@@ -25,6 +25,17 @@
         <td th:text="${album.length}"/>
         <td th:src="${album.imageUrl}"/>
     </tr>
+    <form action="/albums/" method="post">
+        <tr>
+            <td> Id</td>
+            <td><input placeholder="title" type="text" name="title"></td>
+            <td><input placeholder="artist" type="text" name="artist"></td>
+            <td><input placeholder="Songs" type=number name="songCount"></td>
+            <td><input placeholder="Length in Seconds" type=number name="length"></td>
+            <td><input placeholder="imageUrl" type="text" name="imageUrl"></td>
+            <button type="submit"> create album</button>
+        </tr>
+    </form>
 </table>
 </body>
 </html>
