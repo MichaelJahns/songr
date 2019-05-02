@@ -14,8 +14,8 @@
     <select name="album">
         <option th:each="album : ${albums}"
                 th:text="${album.title}"
-                th:value="${album.id}">
-            <!--                th:selected="${song.album.id == album.id}">-->
+                th:value="${album.id}"
+                th:selected="${song.album.id == album.id}">
         </option>
     </select>
     <label> Length in Seconds <input type=number name="length" th:value="${song.length}"></label>

@@ -3,17 +3,19 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title> Edit Album </title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/table.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/album.css">
 </head>
 <body>
 
 <form action="/albums/update" method="post">
+    <image name="imageUrl" th:src="${album.imageUrl}"/>
+
     <div>
         <input type="hidden" name="id" th:value="${album.id}" hidden/>
         <label>Album <input type="text" name="title" th:value="${album.title}"/></label>
     </div>
 
-    <image name="imageUrl" th:src="${album.imageUrl}"/>
 
     <div><label>Artist<input type="text" name="artist" th:value="${album.artist}"/></label></div>
 
@@ -27,20 +29,28 @@
 
     </div>
 </form>
+
+<table id="albums">
+    <thead>
+    <th>Track</th>
+    <th>Title</th>
+    <th>Length</th>
+    <th>Options</th>
+    </thead>
+    <tr th:each="song : ${album.songs}">
+        <td th:text="${song.track}"/>
+        <td th:text="${song.title}"/>
+        <td th:text="${song.length}"/>
+        <td>
+            <a th:text="edit" th:href="@{${'/songs/' + song.id}}"/>
+        </td>
+    </tr>
+</table>
+
 <form action="/albums/delete" method="post">
     <input type="hidden" name="id" th:value="${album.id}" hidden/>
-    <button type="submit"> Delete</button>
+    <button type="submit"> Delete Album</button>
 </form>
-
-<list th:each="song : ${album.songs}">
-    <li th:text="ID"><span th:text="${song.id}"/></li>
-    <li th:text="title"><span th:text="${song.title}"/></li>
-    <li th:text="length"><span th:text="${song.length}"/></li>
-    <li th:text="track"><span th:text="${song.track}"/></li>
-    <td>
-        <a th:text="edit" th:href="@{${'/songs/' + song.id}}"/>
-    </td>
-</list>
 
 
 </body>
