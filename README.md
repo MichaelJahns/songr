@@ -15,6 +15,9 @@ Houses week 3 Code Fellow Labs
 | `/capitalize/<input>` | Where input is a string (spaces and special characters okay), prints input to the page in all capital letters |
 | `/abums/`             | (WIP) Generates a dumby album, prints all albums in db into a table | 
 
+#### Future Features
+* image normalization on Album screen
+* 
 #### Resources
 Creating unique exceptions
 www.stackoverflow.com/questions/2066946/trigger-404-in-spring-mvc-controller

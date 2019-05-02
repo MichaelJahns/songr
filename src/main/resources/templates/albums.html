@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" , xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="./static/table.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/table.css">
 </head>
 <body>
 <!--th:style="${iStat.odd}? 'font-weight: bold;'-->
@@ -15,6 +15,8 @@
         <th>Artist</th>
         <th>Songs</th>
         <th>Length(secs)</th>
+        <th>Album Cover</th>
+        <th>Options</th>
     </tr>
     </thead>
     <tr th:each="album : ${albums}">
@@ -23,8 +25,14 @@
         <td th:text="${album.artist}"/>
         <td th:text="${album.songCount}"/>
         <td th:text="${album.length}"/>
-        <td th:src="${album.imageUrl}"/>
+        <td>
+            <image th:src="${album.imageUrl}"/>
+        </td>
+        <td>
+            <a th:text="edit" th:href="@{${'/albums/' + album.id}}"/>
+        </td>
     </tr>
+
     <form action="/albums/" method="post">
         <tr>
             <td> Id</td>
@@ -33,9 +41,12 @@
             <td><input placeholder="Songs" type=number name="songCount"></td>
             <td><input placeholder="Length in Seconds" type=number name="length"></td>
             <td><input placeholder="imageUrl" type="text" name="imageUrl"></td>
-            <button type="submit"> create album</button>
+            <td>
+                <button type="submit"> create album</button>
+            </td>
         </tr>
     </form>
+
 </table>
 </body>
 </html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Songs</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/table.css">
+</head>
+<body>
+<table id="albums">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Album</th>
+        <th>Lengths(secs)</th>
+        <th>Track</th>
+        <th>Options</th>
+    </tr>
+    </thead>
+    <tr th:each="song : ${songs}">
+        <td th:text="${song.id}"/>
+        <td th:text="${song.title}"/>
+        <td th:text="${song.album.title} ?: 'Unknown'"/>
+        <td th:text="${song.length}"/>
+        <td th:text="${song.track}"/>
+        <td>
+            <a th:text="edit" th:href="@{${'/songs/' + song.id}}"/>
+        </td>
+    </tr>
+
+    <form action="/songs/" method="post">
+        <tr>
+            <td> Id</td>
+            <td><input placeholder="Title" type="text" name="title"></td>
+            <td>
+                <select name="album">
+                    <option th:each="album : ${albums}"
+                            th:text="${album.title}"
+                            th:value="${album.id}">
+                        <!--                th:selected="${song.album.id == album.id}">-->
+                    </option>
+                </select>
+            </td>
+            <td><input placeholder="Length in Seconds" type=number name="length"></td>
+            <td><input placeholder="Track Number" type=number name="track"></td>
+            <td>
+                <button type="submit"> create song</button>
+            </td>
+        </tr>
+    </form>
+
+</table>
+</body>
+</html>

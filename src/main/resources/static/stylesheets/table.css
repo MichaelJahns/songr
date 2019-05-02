@@ -9,6 +9,13 @@
   padding: 8px;
 }
 
+#albums img{
+min-height: 100px;
+min-width: 100px;
+max-height:100px;
+max-width: 100px;
+}
+
 #albums tr:nth-child(even){background-color: #f2f2f2;}
 
 #albums tr:hover {background-color: #ddd;}
