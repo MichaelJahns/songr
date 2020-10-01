@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title> Edit Song </title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/song.css">
+</head>
+
+<body>
+
+<form action="/songs/update" method="post">
+    <input type="hidden" name="id" th:value="${song.id}" hidden/>
+    <label>Album <input type="text" name="title" th:value="${song.title}"/></label>
+    <select name="album">
+        <option th:each="album : ${albums}"
+                th:text="${album.title}"
+                th:value="${album.id}"
+                th:selected="${song.album.id == album.id}">
+        </option>
+    </select>
+    <label> Length in Seconds <input type=number name="length" th:value="${song.length}"></label>
+    <label> Track Number <input type=number name="track" th:value="${song.track}"></label>
+    <button type="submit"> Update</button>
+</form>
+
+
+<form action="/songs/delete" method="post">
+    <input type="hidden" name="id" th:value="${song.id}" hidden/>
+    <button type="submit"> Delete</button>
+</form>
+
+</body>
+</html>

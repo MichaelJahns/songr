@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title> Edit Album </title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/table.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/album.css">
+</head>
+<body>
+
+<form action="/albums/update" method="post">
+    <image name="imageUrl" th:src="${album.imageUrl}"/>
+
+    <div>
+        <input type="hidden" name="id" th:value="${album.id}" hidden/>
+        <label>Album <input type="text" name="title" th:value="${album.title}"/></label>
+    </div>
+
+
+    <div><label>Artist<input type="text" name="artist" th:value="${album.artist}"/></label></div>
+
+    <div>
+        <label> Number of Songs <input type=number name="songCount" th:value="${album.songCount}"></label>
+        <label> Length in Seconds </label><input type=number name="length" th:value="${album.length}"></label>
+    </div>
+
+    <div>
+        <button type="submit"> Update</button>
+
+    </div>
+</form>
+
+<table id="albums">
+    <thead>
+    <th>Track</th>
+    <th>Title</th>
+    <th>Length</th>
+    <th>Options</th>
+    </thead>
+    <tr th:each="song : ${album.songs}">
+        <td th:text="${song.track}"/>
+        <td th:text="${song.title}"/>
+        <td th:text="${song.length}"/>
+        <td>
+            <a th:text="edit" th:href="@{${'/songs/' + song.id}}"/>
+        </td>
+    </tr>
+</table>
+
+<form action="/albums/delete" method="post">
+    <input type="hidden" name="id" th:value="${album.id}" hidden/>
+    <button type="submit"> Delete Album</button>
+</form>
+
+
+</body>
+</html>
