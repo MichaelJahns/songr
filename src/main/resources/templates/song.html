@@ -21,8 +21,9 @@
     <label> Length in Seconds <input type=number name="length" th:value="${song.length}"></label>
     <label> Track Number <input type=number name="track" th:value="${song.track}"></label>
     <button type="submit"> Update</button>
-
 </form>
+
+
 <form action="/songs/delete" method="post">
     <input type="hidden" name="id" th:value="${song.id}" hidden/>
     <button type="submit"> Delete</button>
